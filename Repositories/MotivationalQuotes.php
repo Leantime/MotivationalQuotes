@@ -2,6 +2,7 @@
 
 namespace Leantime\Plugins\MotivationalQuotes\Repositories;
 
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Leantime\Plugins\MotivationalQuotes\Models\Quote;
 
 /**
@@ -11,12 +12,10 @@ class MotivationalQuotes
 {
     /**
      * constructor
-     *
-     * @return self
      */
     public function __construct()
     {
-        //Get DB Instance
+        // Get DB Instance
         //$this->db = app()->make(\Leantime\Core\Db::class);
     }
 
@@ -24,6 +23,8 @@ class MotivationalQuotes
      * getAllQuotes
      *
      * @return Quote[]
+     *
+     * @throws BindingResolutionException
      */
     public function getAllQuotes(): array
     {
@@ -46,15 +47,13 @@ class MotivationalQuotes
         ];
 
             //Results could be fetched from the db here.
-            $quotes = array_map(
-                fn ($quote, $author) => app()->make(
-                    Quote::class,
-                    ['quote' => $quote, 'author' => $author]
-                ),
-                array_keys($quotes),
-                array_values($quotes)
-            );
-
-        return $quotes;
+        return array_map(
+            fn ($quote, $author) => app()->make(
+                Quote::class,
+                ['quote' => $quote, 'author' => $author]
+            ),
+            array_keys($quotes),
+            array_values($quotes)
+        );
     }
 }

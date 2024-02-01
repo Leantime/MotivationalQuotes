@@ -17,6 +17,6 @@
     ],
     "license": "MIT",
     "require": {
-        "leantime/leantime": "2.3"
+        "leantime/leantime": "3.0"
     }
 }

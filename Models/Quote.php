@@ -10,25 +10,14 @@ namespace Leantime\Plugins\MotivationalQuotes\Models;
 class Quote
 {
     /**
-     * @var string
-     */
-    public string $author;
-
-    /**
-     * @var string
-     */
-    public string $quote;
-
-    /**
-     * __construct
+     * Construct
      *
      * @param string $quote
      * @param string $author
-     * @return self
      */
-    public function __construct(string $quote = "", string $author = "")
-    {
-        $this->author = $author;
-        $this->quote = $quote;
-    }
+    public function __construct(
+        public string $quote = "",
+        public string $author = ""
+    )
+    {}
 }
