@@ -14,12 +14,11 @@ class MotivationalQuotes
      * constructor
      *
      * @param MotivationalQuotesRepository $quotesRepo
-     * @return self
      */
-    public function __construct(MotivationalQuotesRepository $quotesRepo)
-    {
-        $this->quotesRepo = $quotesRepo;
-    }
+    public function __construct(
+        private readonly MotivationalQuotesRepository $quotesRepo
+    )
+    {}
 
     /**
      * get random quote

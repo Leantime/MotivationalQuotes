@@ -3,6 +3,7 @@
 namespace Leantime\Plugins\MotivationalQuotes\Controllers;
 
 use Leantime\Core\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Settings Controller for Motivational Quotes Plugin
@@ -24,11 +25,13 @@ class Settings extends Controller
     /**
      * get
      *
-     * @return void
+     * @return Response
+     *
+     * @throws \Exception
      */
-    public function get(): void
+    public function get(): Response
     {
-        $this->tpl->display("motivationalQuotes.settings");
+        return $this->tpl->display("motivationalQuotes.settings");
     }
 
     /**
